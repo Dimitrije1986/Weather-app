@@ -10,63 +10,54 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <title>Document</title>
   </head>
- <body>
+  <body>
+    <main>
+      <a href="weather.html">Vidi prognozu za druge gradove u Srbiji ⇨ </a>
 
-  <main>
-
-
-    <section class="cityWeather">
+      <section class="cityWeather">
         <h2 class="cityName"></h2>
         <p class="cityTemperature"></p>
-        <img class="cityIcon" src="" alt="">
+        <img class="cityIcon" src="" alt="" />
+      </section>
 
-    </section>
+      <img src="house.png" alt="" />
 
-    
-    <img src="house.png" alt="">
+      <section class="hourlyForecast">
+        <div class="weatherPerHour">
+          <h3 class="oneHourBefore"></h3>
+          <img class="oneHourBeforeIcon" src="" alt="" />
+          <p class="oneHourBeforeTemperature"></p>
+        </div>
 
-    <section class="hourlyForecast">
-      <div class="weatherPerHour">
-        <h3 class="oneHourBefore"></h3>
-        <img class="hourlyIcon" src="" alt="">
-        <p class="chanceOfRain"></p>
-        <p class="hourlyTemperature"></p>
-      </div>
+        <div class="weatherPerHour current">
+          <h3 class="currentTime"></h3>
+          <img class="currentHourlyIcon" src="" alt="" />
+          <p class="currentTemperature"></p>
+        </div>
 
-      <div class="weatherPerHour now">
-        <h3 class="nowTime"></h3>
-        <img class="nowHourlyIcon" src="" alt="">
-        <p class="nowChanceOfRain"></p>
-        <p class="nowTemperature"></p>
-      </div>
+        <div class="weatherPerHour">
+          <h3 class="oneHourAfter"></h3>
+          <img class="oneHourAfterIcon" src="" alt="" />
+          <p class="oneHourAfterTemperature"></p>
+        </div>
 
-      <div class="weatherPerHour">
-        <h3 class="oneHourAfter"></h3>
-        <img class="hourlyIcon" src="" alt="">
-        <p class="chanceOfRain"></p>
-        <p class="hourlyTemperature"></p>
-      </div>
+        <div class="weatherPerHour">
+          <h3 class="twoHourAfter"></h3>
+          <img class="twoHourAfterIcon" src="" alt="" />
+          <p class="twoHourAfterTemperature"></p>
+        </div>
 
-      <div class="weatherPerHour ">
-        <h3 class="twoHourAfter"></h3>
-        <img class="hourlyIcon" src="" alt="">
-        <p class="chanceOfRain"></p>
-        <p class="hourlyTemperature"></p>
-      </div>
-
-      <div class="weatherPerHour">
-        <h3 class="threeHourAfter"></h3>
-        <img class="hourlyIcon" src="" alt="">
-        <p class="chanceOfRain"></p>
-        <p class="hourlyTemperature"></p>
-      </div>
-     
-    </section>
-  </main>
+        <div class="weatherPerHour">
+          <h3 class="threeHourAfter"></h3>
+          <img class="threeHourAfterIcon" src="" alt="" />
+          <p class="threeHourAfterTemperature"></p>
+        </div>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

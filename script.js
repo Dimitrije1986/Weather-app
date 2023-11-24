@@ -9,31 +9,46 @@ $(document).ready(function () {
       alert: "yes",
     },
     success: function (response) {
-      //
+      // gornji blok - prognoza
       $(".cityName").text(response.location.name);
       $(".cityTemperature").text(response.current.temp_c);
       $(".cityIcon").attr("src", response.current.condition.icon);
 
-      console.log(response);
 
-      const now_time = response.current.last_updated.slice(11, 13);
-      console.log(now_time);
+      //prognoze u boksevima po satu
 
-      $(".nowTime").text(`${now_time} h`);
-      $(".nowHourlyIcon").attr("src", response.current.condition.icon);
-      $(".nowTemperature").text(response.current.temp_c + "°");
+      const currentTime = +(response.current.last_updated.slice(11, 13));
+      
+      // trenutno vreme
+      $(".currentTime").text(`${currentTime} h`);
+      $(".currentHourlyIcon").attr("src", response.current.condition.icon);
+      $(".currentTemperature").text(response.current.temp_c + "°");
 
-      const icon = response.forecast.forecastday[0].hour[12].condition.icon;
-      const hourlyTemperature =
-        response.forecast.forecastday[0].hour[12].temp_c;
+      
+      // sat ranije
+      
+      $(".oneHourBefore").text(`${currentTime - 1} h`);
+      $(".oneHourBeforeIcon").attr("src", response.forecast.forecastday[0].hour[`${currentTime - 1}`].condition.icon);
+      $(".oneHourBeforeTemperature").text(response.forecast.forecastday[0].hour[`${currentTime - 1}`].temp_c + "°");
+      
+      // sat kasnije
+      
+      $(".oneHourAfter").text(`${currentTime + 1} h`);
+      $(".oneHourAfterIcon").attr("src", response.forecast.forecastday[0].hour[`${currentTime + 1}`].condition.icon);
+      $(".oneHourAfterTemperature").text(response.forecast.forecastday[0].hour[`${currentTime + 1}`].temp_c + "°");
+      
+      // dva sata kasnije
+      
+      $(".twoHourAfter").text(`${currentTime + 2} h`);
+      $(".twoHourAfterIcon").attr("src", response.forecast.forecastday[0].hour[`${currentTime + 2}`].condition.icon);
+      $(".twoHourAfterTemperature").text(response.forecast.forecastday[0].hour[`${currentTime + 2}`].temp_c + "°");
+      
+      // tri sata kasnije
+      
+      $(".threeHourAfter").text(`${currentTime + 3} h`);
+      $(".threeHourAfterIcon").attr("src", response.forecast.forecastday[0].hour[`${currentTime + 3}`].condition.icon);
+      $(".threeHourAfterTemperature").text(response.forecast.forecastday[0].hour[`${currentTime + 3}`].temp_c + "°");
 
-      $(".oneHourBefore").text(`${+now_time.slice(0, 2) - 1} h`);
-      $(".oneHourAfter").text(`${+now_time.slice(0, 2) + 1} h`);
-      $(".twoHourAfter").text(`${+now_time.slice(0, 2) + 2} h`);
-      $(".threeHourAfter").text(`${+now_time.slice(0, 2) + 3} h`);
-      $(".hourlyIcon").attr("src", icon);
-
-      $(".hourlyTemperature").text(hourlyTemperature + "°");
     },
     error: function (error) {
       console.log(error);
