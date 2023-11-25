@@ -4,6 +4,9 @@ body {
   background-repeat: no-repeat;
   background-position: top;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }
 
 main{
@@ -48,5 +51,18 @@ a {
 }
 
 .current {
-  background-color: rgb(43, 43, 227);
+  background-color: rgb(72, 2, 142);
+}
+
+#weather{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.otherCityBox {
+  background-color: rgb(72, 2, 142);
+  width: 20%;
+  color: white;
 }
