@@ -1,6 +1,9 @@
 $(document).ready(function () {
+  const apiUrl = "http://api.weatherapi.com/v1/forecast.json";
+
+
   $.ajax({
-    url: "http://api.weatherapi.com/v1/forecast.json",
+    url: apiUrl,
     data: {
       key: "0e93a6197f9a4658b3a183517232011",
       days: 1,
@@ -16,60 +19,28 @@ $(document).ready(function () {
 
       //prognoze u boksevima po satu
 
+      
       const currentTime = +response.current.last_updated.slice(11, 13);
+      const times = [currentTime - 1, currentTime, currentTime + 1, currentTime + 2, currentTime + 3]
 
-      // trenutno vreme
-      $(".currentTime").text(`${currentTime} h`);
-      $(".currentHourlyIcon").attr("src", response.current.condition.icon);
-      $(".currentTemperature").text(response.current.temp_c + "°");
+      times.forEach(time => {
+        const div = $(`<div class="weatherPerHour">
+                         <h2 >${time} h</h2>
+                         <img src="${
+                          response.forecast.forecastday[0].hour[time].condition
+                          .icon
+                          }" alt="temp-icon" />
+                          <p >${response.forecast.forecastday[0].hour[time].temp_c + "°"}</p>
+                       </div>`);
 
-      // sat ranije
+                   if (time == currentTime) 
+                      $(div).addClass('current');
+                    
 
-      $(".oneHourBefore").text(`${currentTime - 1} h`);
-      $(".oneHourBeforeIcon").attr(
-        "src",
-        response.forecast.forecastday[0].hour[`${currentTime - 1}`].condition
-          .icon
-      );
-      $(".oneHourBeforeTemperature").text(
-        response.forecast.forecastday[0].hour[`${currentTime - 1}`].temp_c + "°"
-      );
+                       $('.hourlyForecast').append(div);
+      })
 
-      // sat kasnije
-
-      $(".oneHourAfter").text(`${currentTime + 1} h`);
-      $(".oneHourAfterIcon").attr(
-        "src",
-        response.forecast.forecastday[0].hour[`${currentTime + 1}`].condition
-          .icon
-      );
-      $(".oneHourAfterTemperature").text(
-        response.forecast.forecastday[0].hour[`${currentTime + 1}`].temp_c + "°"
-      );
-
-      // dva sata kasnije
-
-      $(".twoHourAfter").text(`${currentTime + 2} h`);
-      $(".twoHourAfterIcon").attr(
-        "src",
-        response.forecast.forecastday[0].hour[`${currentTime + 2}`].condition
-          .icon
-      );
-      $(".twoHourAfterTemperature").text(
-        response.forecast.forecastday[0].hour[`${currentTime + 2}`].temp_c + "°"
-      );
-
-      // tri sata kasnije
-
-      $(".threeHourAfter").text(`${currentTime + 3} h`);
-      $(".threeHourAfterIcon").attr(
-        "src",
-        response.forecast.forecastday[0].hour[`${currentTime + 3}`].condition
-          .icon
-      );
-      $(".threeHourAfterTemperature").text(
-        response.forecast.forecastday[0].hour[`${currentTime + 3}`].temp_c + "°"
-      );
+      
     },
     error: function (error) {
       console.log(error);
@@ -81,7 +52,7 @@ $(document).ready(function () {
 
   citys.forEach((city) => {
     $.ajax({
-      url: "http://api.weatherapi.com/v1/forecast.json",
+      url: apiUrl,
       data: {
         key: "0e93a6197f9a4658b3a183517232011",
         days: 1,
