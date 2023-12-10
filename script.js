@@ -1,6 +1,5 @@
 $(document).ready(function () {
-  const apiUrl = "http://api.weatherapi.com/v1/forecast.json";
-
+  const apiUrl = "https://api.weatherapi.com/v1/forecast.json";
 
   $.ajax({
     url: apiUrl,
@@ -19,28 +18,32 @@ $(document).ready(function () {
 
       //prognoze u boksevima po satu
 
-      
       const currentTime = +response.current.last_updated.slice(11, 13);
-      const times = [currentTime - 1, currentTime, currentTime + 1, currentTime + 2, currentTime + 3]
+      const times = [
+        currentTime - 1,
+        currentTime,
+        currentTime + 1,
+        currentTime + 2,
+        currentTime + 3,
+      ];
 
-      times.forEach(time => {
+      times.forEach((time) => {
         const div = $(`<div class="weatherPerHour">
                          <h2 >${time} h</h2>
                          <img src="${
-                          response.forecast.forecastday[0].hour[time].condition
-                          .icon
-                          }" alt="temp-icon" />
-                          <p >${response.forecast.forecastday[0].hour[time].temp_c + "°"}</p>
+                           response.forecast.forecastday[0].hour[time].condition
+                             .icon
+                         }" alt="temp-icon" />
+                          <p >${
+                            response.forecast.forecastday[0].hour[time].temp_c +
+                            "°"
+                          }</p>
                        </div>`);
 
-                   if (time == currentTime) 
-                      $(div).addClass('current');
-                    
+        if (time == currentTime) $(div).addClass("current");
 
-                       $('.hourlyForecast').append(div);
-      })
-
-      
+        $(".hourlyForecast").append(div);
+      });
     },
     error: function (error) {
       console.log(error);
