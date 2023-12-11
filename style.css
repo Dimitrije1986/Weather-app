@@ -1,15 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-image: url("bg-img.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-
 }
 
-main{
+main {
   display: flex;
   flex-direction: column;
 }
@@ -18,32 +20,52 @@ a {
   color: rgba(249, 247, 247, 0.893);
   text-decoration: none;
   padding: 5px;
+  margin: 10px;
+  width: 20%;
+  position: absolute;
+  right: 0;
+  background-color: #ffffff1a;
+  backdrop-filter: blur(1px);
+  border-radius: 10%;
+}
+
+#houseImage {
+  width: 500px;
   margin: 0 auto;
 }
 
-
 .cityWeather {
+  background-color: #ffffff1a;
+  backdrop-filter: blur(1px);
+  border-radius: 10%;
+  width: 20%;
   color: white;
   text-align: center;
-  padding: 10px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
 .hourlyForecast {
   background-color: #ffffff56;
-  backdrop-filter: blur(10px);
-  height: 40vh;
+  backdrop-filter: blur(3px);
   border-radius: 10px 10px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 1rem;
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .weatherPerHour {
   background-color: #ffffff0f;
   border-radius: 50px;
   border: 1px solid;
-  width: 15%;
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 5%;
   color: rgb(66, 56, 56);
   display: flex;
   flex-direction: column;
@@ -55,16 +77,24 @@ a {
   color: #fff;
 }
 
-#weather{
+#weather {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-
 .otherCityBox {
+  margin-top: 5rem;
   background-color: rgb(72, 2, 142);
   width: 50%;
   border-radius: 20px;
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  #houseImage {
+    width: 70%;
+  }
+
+
 }
