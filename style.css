@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
   text-align: center;
+  overflow: auto;
 }
 
 main {
@@ -30,7 +31,6 @@ a {
 }
 
 #houseImage {
-  width: 500px;
   margin: 0 auto;
 }
 
@@ -54,9 +54,6 @@ a {
   align-items: center;
   gap: 1rem;
   padding: 2rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 .weatherPerHour {
@@ -91,10 +88,8 @@ a {
   color: white;
 }
 
-@media only screen and (max-width: 600px) {
-  #houseImage {
-    width: 70%;
-  }
-
-
+@media screen and (max-width: 600px) {
+ a{
+  display: none;
+ }
 }

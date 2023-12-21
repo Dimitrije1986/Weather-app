@@ -77,3 +77,13 @@ $(document).ready(function () {
     });
   });
 });
+
+document.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+
+  if (document.title === "Weather-app") {
+    window.location.href = "weather.html";
+  } else {
+    window.location.href = "index.html";
+  }
+});
